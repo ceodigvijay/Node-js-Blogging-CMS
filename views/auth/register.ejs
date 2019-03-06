@@ -1,0 +1,14 @@
+<% include ../partials/header.ejs %>
+
+<div class="container center-align">
+  <div class="loginSignup-container">
+    <h4>Register</h4>
+    <form action="/register" method="POST">
+      <input type="text" name="username" placeholder="Username" />
+      <input type="password" name="password" placeholder="Password" />
+      <button class="btn">Submit</button>
+    </form>
+  </div>
+</div>
+
+<% include ../partials/footer.ejs %>

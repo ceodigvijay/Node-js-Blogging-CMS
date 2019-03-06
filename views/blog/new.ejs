@@ -1,0 +1,40 @@
+<% include ../partials/header.ejs %>
+
+<div id="new-content" class="center-align">
+    <h1> Add a new Blog Post</h1>
+    <div class="row center-align add-new-container">
+        <form action="/blog" method="POST" class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">title</i>
+                    <input type = "text" name="title" id="newTitle">
+                    <label for="newTitle">Title</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">image</i>
+                    <input type = "text" name="image" id="newImage">
+                    <label for="newImage">Image Link</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">create</i>
+                    <textarea name="content" id="newContent" class="materialize-textarea"></textarea>
+                    <label for="newContent">Content</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <button class="btn waves-effect waves-light">Submit<i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+<% include ../partials/footer.ejs %>

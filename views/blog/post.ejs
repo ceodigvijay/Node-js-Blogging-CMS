@@ -1,0 +1,65 @@
+<% include ../partials/header.ejs %>
+<div class="container post-show">
+  <h1><%= post.title %></h1>
+  <span>Published on <%= post.created.toDateString() %> &nbsp;By <%= post.author.username %></span>
+  <img src="<%= post.image %>" class="materialboxed post-show-featured-img" />
+  <p class="post-show-content"><%= post.content %></p>
+
+  <div class="comment-area container">
+    <a href="/blog/<%= post._id %>/comment/new">Add Comment</a>
+    <% post.comments.forEach(function(item){ %>
+    <div class="row">
+      <div class="col s12">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Name: <%= item.name %></span>
+            <p><%= item.comment %></p>
+          </div>
+          <% if(currentUser && post.author.id.equals(currentUser._id)){ %>
+          <div class="card-action">
+            <a href="/blog/<%= post._id %>/comment/<%= item._id %>/edit" class="waves-effect btn-small blue waves-light btn"><i class="material-icons left">edit</i>Edit</a>
+            <form style="display:inline" action="/blog/<%= post._id %>/comment/<%= item._id %>?_method=DELETE" method="POST">
+              <button class="waves-effect btn-small red waves-light btn"><i class="material-icons left">delete</i>Delete</button>
+            </form>
+          </div>
+          <% }else{} %>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+
+  <% if(currentUser && post.author.id.equals(currentUser._id)){ %>
+  <!-- Floating Action Button -->
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large red"
+      ><i class="large material-icons">mode_edit</i></a
+    >
+    <ul>
+      <li>
+        <form action="/blog/<%= post._id %>?_method=delete" method="POST">
+          <button class="btn-floating red">
+            <i class="material-icons">delete</i>
+          </button>
+        </form>
+      </li>
+      <li>
+        <a class="btn-floating yellow darken-1"
+          ><i class="material-icons">format_quote</i></a
+        >
+      </li>
+      <li>
+        <a class="btn-floating green" href="/blog/<%= post._id %>/edit"
+          ><i class="material-icons">edit</i></a
+        >
+      </li>
+      <li>
+        <a class="btn-floating blue"
+          ><i class="material-icons">attach_file</i></a
+        >
+      </li>
+    </ul>
+  </div>
+  <% }else{} %>
+</div>
+<% include ../partials/footer.ejs %>

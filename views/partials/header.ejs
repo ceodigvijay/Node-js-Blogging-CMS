@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CroudHead - Blogging Platform</title>
+
+    <!-- Materialize CSS Files -->
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- Compiled and minified JavaScript -->
+    <!-- Materialize CSS Js File -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Custom Styling -->
+
+    <style>
+      /* New Page */
+
+      .add-new-container {
+        width: 80%;
+        border: 1px solid #b1afaf98;
+        padding: 20px 0 0 0;
+      }
+
+      /* Blog Page */
+      .post-card {
+        margin: 30px 0 0 0;
+      }
+
+      .post-card-image {
+        top: 18% !important;
+        margin: 10px;
+      }
+
+      .post-card-date {
+        font-weight: bold;
+        padding-bottom: 20px;
+      }
+
+      .card .card-content p {
+        margin: 10px 0 0 0 !important;
+      }
+
+      /* Post show */
+
+      .post-show {
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .post-show-featured-img {
+        margin: 0 auto !important;
+        width: 80%;
+      }
+
+      .post-show-content {
+        font-size: 1.3em;
+        text-align: left;
+      }
+
+      /* Login Page */
+      .loginSignup-container {
+        width: 100%;
+        padding: 10%;
+      }
+
+      .loginSignup-container button{
+        margin: 30px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo">CroudHead</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"
+          ><i class="material-icons">menu</i></a
+        >
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/blog/new">New Post</a></li>
+          <% if(!currentUser){ %>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Sign Up</a></li>
+          <% }else{ %>
+            <li><a href="#">Signed In as <%= currentUser.username %></a></li> 
+            <li><a href="/logout">Logout</a></li>
+          <% } %>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/blog/new">New Post</a></li>
+      <% if (!currentUser){ %>
+      <li><a href="/login">Login</a></li>
+      <li><a href="/register">Sign Up</a></li>
+      <% }else{ %>
+      <li><a href="/logout">Logout</a></li>
+      <% } %>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+
+    <% if(error && error.length >0){ %>
+      <script>
+         M.toast({html: '<%= error %>', classes: 'rounded'})
+      </script>
+    <% } %>
+    <% if(success && success.length >0){ %>
+      <h1><%= success %></h1>
+    <% } %>

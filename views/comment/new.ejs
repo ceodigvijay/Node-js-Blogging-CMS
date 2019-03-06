@@ -1,0 +1,33 @@
+<% include ../partials/header.ejs %>
+
+<div id="new-content" class="center-align container">
+    <h1> Add a new Comment on <%= post.title %></h1>
+    <div class="row center-align add-new-container">
+        <form action="/blog/<%= post._id %>/comment" method="POST" class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">title</i>
+                    <input type = "text" name="name" id="name">
+                    <label for="name">Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">create</i>
+                    <textarea name="comment" id="newComment" class="materialize-textarea"></textarea>
+                    <label for="newComment">Comment</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <button class="btn waves-effect waves-light">Submit<i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+<% include ../partials/footer.ejs %>
