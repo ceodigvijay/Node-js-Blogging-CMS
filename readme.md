@@ -1,4 +1,4 @@
-# CroudHead CMS
+# CrowdHead CMS
 
 A simple Blogging CMS in Node.js.
 
